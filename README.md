@@ -1,7 +1,5 @@
 # amdeposit
-## Anonymous Money Deposit
-
-[Example Site](https://zygtech.pl/amdeposit/)
+## Anonymous Money Deposit ([Example Site](https://zygtech.pl/amdeposit/))
 
 PHP written scripts to encode in QR Codes secure money deposits as in "Swiss Bank". No database. Uses:
 
