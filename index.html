@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Anonymous Money Deposit</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<style>
+			body { 
+				text-align: center;
+				font-family: sans;
+			}
+			div {
+				background: #eeeeee;
+				padding: 30px;
+				border-radius: 20px;
+				margin: 30px auto;
+				width: 500px;
+			}
+			input[type="text"],input[type="month"],input[type="file"],input[type="password"] {
+				width: 330px;
+				font-size: 14px;
+				margin: 15px;
+				padding: 10px;
+				font-family: sans;
+				background: #aaaaaa;
+				border: none;
+				border-radius: 10px;
+			}
+			input[type="submit"] {
+				font-weight: bold;
+				font-size: 14px;
+				padding: 10px;
+				background: #333333;
+				border: none;
+				border-radius: 10px;
+				color: #ffffff;
+			}
+			input[type="password"] {
+				width: 70px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Anonymous Money Deposit</h1>
+		<div>
+		<h2>Place a deposit</h2>
+		<form action="generate.php" method="POST">
+			<table>
+			<tr><td>DEPOSIT VALUE (USD):</td><td><input type="text" name="value" placeholder="VALUE" value=""/></td></tr>
+			<tr><td>MONTH OF WITHDRAWAL:</td><td><input type="month" name="date" /></td></tr>
+			<tr><td>SECURE PASSWORD:</td><td><input type="password" name="pin" size="4" minlength="4" maxlength="4" placeholder="PIN" /> <input type="submit" value="CREATE" /></td></tr>
+			</table>
+		</form>
+		</div><div>
+		<h2>Withdraw money</h2>
+		<form action="verify.php" method="POST">
+			<table>
+			<tr><td>QRCODE SCAN (PNG):</td><td><input id="file" type="file" placeholder="QRCODE PNG" accept=".png" /></td></tr>
+			<tr><td>SECURE PASSWORD:</td><td><input type="password" name="pin" size="4" minlength="4" maxlength="4" placeholder="PIN" /> <input type="submit" value="VERIFY" /></td></tr>
+			</table>
+			<input id="code" type="hidden" name="code" />
+		</form>
+		</div>
+	</body>
+	<script type="module">
+		import QrScanner from "./qr-scanner/qr-scanner.min.js";
+		QrScanner.WORKER_PATH = './qr-scanner/qr-scanner-worker.min.js';
+
+		const fileSelector = document.getElementById('file');
+		const fileQrResult = document.getElementById('code');
+		
+		fileSelector.addEventListener('change', event => {
+			const file = fileSelector.files[0];
+			if (!file) {
+				return;
+			}
+			QrScanner.scanImage(file)
+				.then(result => fileQrResult.value = result)
+				.catch(e => fileQrResult.value = '');
+		});
+    
+	</script>
+</html>
