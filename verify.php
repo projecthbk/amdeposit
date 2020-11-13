@@ -8,6 +8,7 @@
 		if (!in_array($code,$codes) && $code==md5($value . strftime('%Y-%m',time()) . $_POST['pin'] . $secret)) {
 			$codes[]=$code;
 			file_put_contents($path . '/AMDused',serialize($codes));
+			chmod($path . '/AMDused',0777);
 			echo 'PAY: ' . $value;
 		} else echo 'FAILURE';
 	} else echo 'ERROR';
