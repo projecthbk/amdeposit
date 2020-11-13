@@ -3,7 +3,7 @@
 
 [Example Site](https://zygtech.pl/amdeposit/)
 
-PHP written scripts to encode in QR Codes secure money deposits. Uses:
+PHP written scripts to encode in QR Codes secure money deposits as in "Swiss Bank". Uses:
 
 1. [PHP QR Code](http://phpqrcode.sourceforge.net/)
 2. [QR Scanner](https://nimiq.github.io/qr-scanner/)
