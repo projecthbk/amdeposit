@@ -5,7 +5,7 @@
 		$codes = unserialize(file_get_contents($path . '/AMDused'));
 		$value = explode(':',$qrcode)[1];
 		$code = explode(':',$qrcode)[2]; 
-		if (!in_array($code,$codes) && $code==md5($value . strftime('%Y-%m',time()) . $_POST['pin'] . $secret)) {
+		if (!in_array($code,$codes) && $code==hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $secret)) {
 			$codes[]=$code;
 			file_put_contents($path . '/AMDused',serialize($codes));
 			chmod($path . '/AMDused',0777);
