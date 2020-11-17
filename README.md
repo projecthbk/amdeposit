@@ -9,6 +9,6 @@ PHP written scripts to encode in QR Codes secure money deposits as in "Swiss Ban
 Installation:
 1. `Clone` or `unpack ZIP` on server to `public web` folder
 2. Edit `config.php` with `non-public path` (create a folder with `safe name`) and `security protection string`
-3. Add to `CRON` monthly cleaning of `temporary file` blocking `multiple withdrawal` in same month:
+3. Add to `CRON` monthly cleaning of `temporary file` blocking `multiple withdrawal` in same month (`crontab -e`):
     + in example: `0 0 1 * * sudo -u www-data rm /home/pi/74d4ddea0d225d5a/AMDeposit.db`
 4. Check `index.html` for example of usage AND/OR use `PHP scripts` as an `API` to your system
