@@ -8,7 +8,6 @@
 		if (!in_array($code,$codes) && $code==hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $secret)) {
 			$codes[]=$code;
 			file_put_contents($path . '/AMDused',serialize($codes));
-			chown($path . '/AMDused',$user);
 			echo 'PAY: ' . $value;
 		} else echo 'FAILURE';
 	} else echo 'ERROR';
