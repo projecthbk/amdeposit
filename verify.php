@@ -5,9 +5,9 @@
 		$codes = unserialize(file_get_contents($path . '/AMDeposit.db'));
 		$value = explode(':',$qrcode)[1];
 		$code = explode(':',$qrcode)[2];
-		$id =  explode(':',$qrcode)[3];
-		if (!in_array($code . ':' . $id,$codes) && $code==hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $id . $secret)) {
-			$codes[]=$code . ':' . $id;
+		$hash =  explode(':',$qrcode)[3];
+		if (!in_array($code . ':' . $hash,$codes) && $code==hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $hash . $secret)) {
+			$codes[]=$code . ':' . $hash;
 			file_put_contents($path . '/AMDeposit.db',serialize($codes));
 			echo 'PAY: ' . $value;
 		} else echo 'FAILURE';
