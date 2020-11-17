@@ -6,7 +6,6 @@
 	if (!in_array($code,$codes) && strlen($_POST['pin'])==4 && $_POST['value']>0 && $_POST['date']!='') {
 		$codes[]=$code;
 		file_put_contents($path . '/AMDnew',serialize($codes));
-		chown($path . '/AMDnew',$user);
 		header('Content-Description: QR Code Image');
 		header('Content-Type: image/png');
 		header('Content-Disposition: attachment; filename="QRCode.png"');
