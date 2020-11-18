@@ -1,6 +1,8 @@
 # amdeposit
 ## Anonymous Money Deposit ([Example Site](https://zygtech.pl/amdeposit/))
 
+### Package with obfuscated sources: [AMDeposit.zip](https://github.com/projecthbk/amdeposit/files/5557209/AMDeposit.zip)
+
 PHP written scripts to encode in QR Codes secure money deposits as in "Swiss Bank". No database. Uses:
 
 1. [PHP QR Code](http://phpqrcode.sourceforge.net/)
