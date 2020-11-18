@@ -6,7 +6,7 @@
 		$value = explode(':',$qrcode)[1];
 		$code = explode(':',$qrcode)[2];
 		$hash =  explode(':',$qrcode)[3];
-		if (!in_array($code . ':' . $hash,$codes) && $code==hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $hash . $secret)) {
+		if (!in_array($code . ':' . $hash,$codes) && $code==base64_encode(hash('sha256',$value . strftime('%Y-%m',time()) . $_POST['pin'] . $hash . $secret,true))) {
 			$codes[]=$code . ':' . $hash;
 			file_put_contents($path . '/AMDeposit.db',serialize($codes));
 			echo 'PAY: ' . $value;
