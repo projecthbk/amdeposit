@@ -1,5 +1,5 @@
 # amdeposit
-## Anonymous Money Deposit ([Example Site](https://zygtech.pl/amdeposit/))
+## Anonymous Money Deposit
 
 ### Package with obfuscated sources: [AMDeposit.zip](https://github.com/projecthbk/amdeposit/files/5558047/AMDeposit.zip)
 
